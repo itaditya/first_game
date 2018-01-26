@@ -82,8 +82,7 @@ function resolveCollision(particle, otherParticle) {
         // Swap particle velocities for realistic bounce effect
         particle.velocity.x = vFinal1.x;
         particle.velocity.y = vFinal1.y;
-        console.log(particle.velocity.x);
-        console.log(particle.velocity.y);
+        console.log(Math.sqrt(Math.pow(particle.velocity.x, 2) + Math.pow(particle.velocity.y, 2)));
         otherParticle.velocity.x = 0;
         otherParticle.velocity.y = 0;
     }
@@ -115,8 +114,8 @@ function Ball(x, y, radius, color) {
     this.color = color;
     this.mass = 0;
     this.velocity = {
-        x: 5,
-        y: 5
+        x: 3,
+        y: 4
     };
     this.draw = function() {
         c.beginPath();
@@ -157,13 +156,13 @@ function init() {
     var radius = 20;
     for (var i = 0; i < 30; i++) {
         var x = Math.random() * (innerWidth - radius * 2) + radius;
-        var y = Math.random() * (500 - radius * 2) + radius;
+        var y = Math.random() * (300 - radius * 2) + radius;
         var color = color_array[Math.floor(Math.random() * color_array.length)];
         if (i != 0) {
             for (j = 0; j < circle_array.length; j++) {
                 if (distance(x, circle_array[j].x, y, circle_array[j].y) - radius * 2 < 0) {
                     x = Math.random() * (innerWidth - radius * 2) + radius;
-                    y = Math.random() * (500 - radius * 2) + radius;
+                    y = Math.random() * (300 - radius * 2) + radius;
                     j = -1;
                 }
             }
@@ -201,7 +200,7 @@ function init2() {
     var radius = 8;
     var dx = ((Math.random() - 0.5) * 5);
     var dy = ((Math.random() - 0.5) * 5);
-    strike_ball = (new Ball(canvas.width / 2, canvas.height - 80, radius, "red"));
+    strike_ball = (new Ball(canvas.width / 2, canvas.height - 20, radius, "red"));
     bar = new Bar(mouse.x, mouse.y, 100, 10);
 }
 
