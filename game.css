@@ -1,5 +1,30 @@
-canvas {}
 body {
     margin: 0px;
     overflow: hidden;
+}
+
+#game-container {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#game-canvas {
+  background: #fff;
+}
+
+#game-over-section {
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: -100;
+}
+
+#game-over-section.show {
+  z-index: 100;
 }

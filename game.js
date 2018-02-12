@@ -4,6 +4,8 @@ canvas.height = window.innerHeight;
 var c = canvas.getContext('2d');
 var color_array = ["#3498DB", "#73C6B6", "#8E44AD", "#F1C40F", "#ECF0F1", "#ECF0F1", "#F39C12", "red"];
 
+var gameOverSectionElem = document.querySelector('#game-over-section');
+
 function distance(x1, x2, y1, y2) {
     var x_dis = x2 - x1;
     var y_dis = y2 - y1;
@@ -137,7 +139,8 @@ function Ball(x, y, radius, color) {
             this.velocity.y = -this.velocity.y;
         }
         if (this.y + this.radius > innerHeight) {
-            alert("gameover");
+            // alert("gameover");
+            gameOver();
         }
         if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
             this.velocity.x = -this.velocity.x;
@@ -213,6 +216,22 @@ function animate() {
     }
     bar.update();
 }
+
+function gameOver() {
+  gameOverSectionElem.classList.add('show');
+}
+
+function restartGame() {
+  window.location.reload();
+}
+
+gameOverSectionElem.addEventListener('click', function(event){
+  var elem = event.target;
+  if(elem.id === 'reset-btn') {
+    restartGame();
+  }
+})
+
 init();
 init2();
 animate();
